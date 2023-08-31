@@ -1,0 +1,16 @@
+Efficiency:
+	Java: Java's efficiency is affected by its platform independence and the need for a runtime environment (JVM). While Just-In-Time (JIT) compilation helps optimize performance at runtime, it may introduce some overhead.
+	Scheme: Scheme is a dynamically-typed language and typically interpreted, which can make it less efficient than languages that are compiled to machine code. However, Scheme's simple syntax and minimalistic features can sometimes result in relatively efficient code execution, especially for certain types of tasks.
+
+Regularity:
+	Java: Java is known for its strict syntax and type system, making it more regular in terms of structure. 
+
+	Scheme: Scheme, being a dynamically typed language, might be considered less regular due to its flexibility in terms of variable types.
+
+Security:
+	Java: The Java Virtual Machine (JVM) provides a controlled runtime environment that includes features like bytecode verification, classloading restrictions, and memory management. 
+	Scheme: Scheme doesn't have the same level of built-in security features as Java. While its simplicity can reduce the potential for certain types of vulnerabilities, it might still be susceptible to issues like code injection or incorrect memory management if not used carefully.
+
+Extensibility:
+	Java: Java has a rich ecosystem of libraries and frameworks, making it highly extensible.
+	Scheme: Scheme is known for its macro system and minimalist syntax, can also be quite extensible through the creation of custom macros.

@@ -1,0 +1,5 @@
+#lang racket
+
+(define (max-num lst)
+  0 ;; YOUR CODE HERE -- call `error` on an empty list
+  )

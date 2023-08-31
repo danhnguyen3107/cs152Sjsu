@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="1787FC3VF7FYRRVV9JRT6TAEH"/>
+<meta name="Time" content="2023-08-31T02:01:38Z"/>
+<meta name="ID" content="lab-map-filter"/>
+<meta name="User" content="osej-luzu-inuv-beja"/>
+<meta name="Problem" content="ext/1806110801amh1vk2x1z0d4aubd5ardp7id"/>
+<meta name="Elapsed" content="47924 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header call">Calling with Arguments</p>
+<div class="call">
+<table class="run">
+<tr><th>&#160;</th><th>Name</th><th>Arguments</th><th>Actual</th><th>Expected</th></tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>strings-to-nums</pre></td>
+<td><pre>'("1" "2" "3")</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>strings-to-nums</pre></td>
+<td><pre>'()</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>strings-to-nums</pre></td>
+<td><pre>'("9" "8" "2")</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>make-names</pre></td>
+<td><pre>'("Ned" "Tyrion" "Joffrey") '("Stark" "Lannister" "Baratheon")</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>make-names</pre></td>
+<td><pre>'("Captain" "Iron" "Incredible" "Thor") '("America" "Man" "Hulk" "Son of Odin")</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>managers-only</pre></td>
+<td><pre>'()</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>managers-only</pre></td>
+<td><pre>'( ("Robert" "Tables" 100000 "Manager") ("Alice" "Liddell" 50000 "Copy editor") ("Tweedle" "Dee" 46000 "entry level") ("Tweedle" "Dum" 46000 "entry level") ("William" "Gates" 100000000000 "Manager") ("Marcus" "Aurelius" 0 "Manager"))</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+<td><pre>timeout: sending signal KILL to command ‘racket’
+</pre></td>
+</tr>
+</table>
+</div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">lab-map-filter.rkt:</p>
+<pre class="output">#lang racket
+
+(provide strings-to-nums make-names employees managers-only)
+
+(define (strings-to-nums lst)
+  (map string-&gt;number lst)
+  )
+
+;; In racket, we can apply `map` to multiple lists,
+;; (although this is not true in all functional langauges).
+;; For example, `list-of-sums` is '(5 7 9).
+(define list-of-sums (map + '(1 2 3) '(4 5 6)))
+
+;; Write a function that takes a list of list of first names
+;; and a list of last names and produces a list of full names.
+;; You may assume that the lists are of equal length.
+(define (make-names fnames lnames)
+  (map string-append (map (lambda (x) (string-append x " ")) fnames) lnames)
+  )
+
+;; Write a function that takes a list of employees (each represented as a list)
+;; and return a list of managers.
+(define employees
+  '( ("Robert" "Tables" 100000 "Manager")
+     ("Alice" "Liddell" 50000 "Copy editor")
+     ("Tweedle" "Dee" 46000 "entry level")
+     ("Tweedle" "Dum" 46000 "entry level")
+     ("William" "Gates" 100000000000 "Manager")
+     ("Marcus" "Aurelius" 0 "Manager")))
+
+(define (managers-only lst)
+   (filter (lambda (x) (string=? "Manager" (last x))) lst)
+  )
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">7/7</p>
+</div>
+<div class="footnotes"><div class="footnote">2023-08-31T02:01:38Z</div>
+</div>
+</body></html>
