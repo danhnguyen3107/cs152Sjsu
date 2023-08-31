@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="BZ4688J5694CK1O9LTQ4LM3T8"/>
+<meta name="Time" content="2023-08-27T21:18:36Z"/>
+<meta name="ID" content="lab"/>
+<meta name="User" content="deti-esaz-esyg-mohu"/>
+<meta name="Problem" content="ext/2002030156bffxftu782dpvaz3idrur1a1x"/>
+<meta name="Elapsed" content="21857 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header call">Calling with Arguments</p>
+<div class="call">
+<table class="run">
+<tr><th>&#160;</th><th>Name</th><th>Arguments</th><th>Actual</th><th>Expected</th></tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>reverse</pre></td>
+<td><pre>'()</pre></td>
+<td><pre>()
+</pre></td>
+<td><pre>()
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>reverse</pre></td>
+<td><pre>'(1 2 3 4)</pre></td>
+<td><pre>(4 3 2 1)
+</pre></td>
+<td><pre>(4 3 2 1)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>reverse</pre></td>
+<td><pre>'(0 1 2 0 9)</pre></td>
+<td><pre>(9 0 2 1 0)
+</pre></td>
+<td><pre>(9 0 2 1 0)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>add-two-lists</pre></td>
+<td><pre>'(1 2 3 4 5) '(9 0 2 1 0)</pre></td>
+<td><pre>(10 2 5 5 5)
+</pre></td>
+<td><pre>(10 2 5 5 5)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>add-two-lists</pre></td>
+<td><pre>'(5 4 3) '(2 1)</pre></td>
+<td><pre>(7 5 3)
+</pre></td>
+<td><pre>(7 5 3)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>add-two-lists</pre></td>
+<td><pre>'() '(9 1 1)</pre></td>
+<td><pre>(9 1 1)
+</pre></td>
+<td><pre>(9 1 1)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>add-two-lists</pre></td>
+<td><pre>'(13 14 15 16) '(2 3 3)</pre></td>
+<td><pre>(15 17 18 16)
+</pre></td>
+<td><pre>(15 17 18 16)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>positive-nums-only</pre></td>
+<td><pre>'()</pre></td>
+<td><pre>()
+</pre></td>
+<td><pre>()
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>positive-nums-only</pre></td>
+<td><pre>'(1 2 3)</pre></td>
+<td><pre>(1 2 3)
+</pre></td>
+<td><pre>(1 2 3)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>positive-nums-only</pre></td>
+<td><pre>'(-1 -2 -3)</pre></td>
+<td><pre>()
+</pre></td>
+<td><pre>()
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>positive-nums-only</pre></td>
+<td><pre>'(1 -2 3)</pre></td>
+<td><pre>(1 3)
+</pre></td>
+<td><pre>(1 3)
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>positive-nums-only</pre></td>
+<td><pre>'(1 2 -4 90 -4)</pre></td>
+<td><pre>(1 2 90)
+</pre></td>
+<td><pre>(1 2 90)
+</pre></td>
+</tr>
+</table>
+</div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">lab.rkt:</p>
+<pre class="output">#lang racket
+
+(provide reverse add-two-lists positive-nums-only)
+
+(define (reverse lst)
+  (cond
+    [(= (length lst) 0) '()]
+    [else (append (reverse (cdr lst)) (list (car lst)))])
+  )
+
+(define (add-two-lists lst1 lst2)
+  (cond
+    [(and (= (length lst1) 0) (= (length lst2) 0))'()]
+    [(= (length lst1) 0)
+     (cons (car lst2)(add-two-lists lst1 (cdr lst2)))]
+    [(= (length lst2) 0)
+     (cons (car lst1)(add-two-lists (cdr lst1) lst2))]
+    [else
+     (cons (+ (car lst1) (car lst2)) (add-two-lists (cdr lst1) (cdr lst2)))])
+  )
+
+(define (positive-nums-only lst)
+   (cond
+     [(= (length lst) 0) '()]
+     [(&lt;= (car lst) 0) (positive-nums-only (cdr lst))]
+     [else (cons (car lst) (positive-nums-only (cdr lst)))])
+  )
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">12/12</p>
+</div>
+<div class="footnotes"><div class="footnote">2023-08-27T21:18:36Z</div>
+</div>
+</body></html>

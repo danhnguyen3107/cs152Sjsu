@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="23IH9ZXXNS7X11LLU9LCP9TIC"/>
+<meta name="Time" content="2023-08-26T21:28:58Z"/>
+<meta name="ID" content="scheme-intro"/>
+<meta name="User" content="ujiz-abeb-ecot-nute"/>
+<meta name="Problem" content="ext/20012807368ogelmlnwxv24t91xq4qowbl8"/>
+<meta name="Elapsed" content="10801 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header call">Calling with Arguments</p>
+<div class="call">
+<table class="run">
+<tr><th>&#160;</th><th>Name</th><th>Arguments</th><th>Actual</th><th>Expected</th></tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>max-num</pre></td>
+<td><pre>'(1 2 3 4 5)</pre></td>
+<td><pre>5
+</pre></td>
+<td><pre>5
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>max-num</pre></td>
+<td><pre>'(-5 -3 -2 -13)</pre></td>
+<td><pre>-2
+</pre></td>
+<td><pre>-2
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>max-num</pre></td>
+<td><pre>'(1)</pre></td>
+<td><pre>1
+</pre></td>
+<td><pre>1
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>fizzbuzz</pre></td>
+<td><pre>9</pre></td>
+<td><pre>"1 2 fizz 4 buzz fizz 7 8 fizz "
+</pre></td>
+<td><pre>"1 2 fizz 4 buzz fizz 7 8 fizz "
+</pre></td>
+</tr>
+<tr><td><span class="pass">pass </span></td>
+<td><pre>fizzbuzz</pre></td>
+<td><pre>21</pre></td>
+<td><pre>"1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz fizz "
+</pre></td>
+<td><pre>"1 2 fizz 4 buzz fizz 7 8 fizz buzz 11 fizz 13 14 fizzbuzz 16 17 fizz 19 buzz fizz "
+</pre></td>
+</tr>
+</table>
+</div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">scheme-intro.rkt:</p>
+<pre class="output">#lang racket
+(provide max-num fizzbuzz)
+
+(define (max-num lst)
+    (cond [(null? (list-tail lst 1)) (list-ref lst 0)]
+        [else (max (list-ref lst 0) (max-num (list-tail lst 1)))])
+  )
+
+
+;; The function counts from 1 to the specified number, printing a string with the result.
+;; The rules are:
+;;    If a number is divisible by 3 and by 5, instead say "fizzbuzz"
+;;    Else if a number is divisible by 3, instead say "fizz"
+;;    Else if a number is divisible by 5, instead say "buzz"
+;;    Otherwise say the number
+;;
+(define (fizzbuzz n)
+   (cond [(= n 0) ""]
+        [(and (integer? (/ n 3)) (integer? (/ n 5))) (string-append (fizzbuzz (- n 1)) "fizzbuzz ")]
+        [(integer? (/ n 3)) (string-append (fizzbuzz (- n 1)) "fizz ")]
+        [(integer? (/ n 5)) (string-append (fizzbuzz (- n 1)) "buzz ")]
+        [else (string-append (fizzbuzz (- n 1)) (number-&gt;string n) " ")])
+  )
+
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">5/5</p>
+</div>
+<div class="footnotes"><div class="footnote">2023-08-26T21:28:58Z</div>
+</div>
+</body></html>
