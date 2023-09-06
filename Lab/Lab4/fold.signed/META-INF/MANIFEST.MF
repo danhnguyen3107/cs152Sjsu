@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 11.0.17 (Eclipse Adoptium)
+
+Name: fold.rkt
+SHA-256-Digest: YPxA0emBi5o68Z94mqhuD5+duFrR93nBxYwjjzBTso8=
+
+Name: report.html
+SHA-256-Digest: N+C2Ptgq8zn6utLyXNct0nzS/t7Ub+uOQAxB2SD6hkY=
+
