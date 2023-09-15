@@ -1,5 +1,9 @@
 #lang racket
 
-(define y '())
+(cons 2 (hash))
 
-(null? y)
+(cdr (cons 2 (hash)))
+(if #f
+    2
+    3)
+
