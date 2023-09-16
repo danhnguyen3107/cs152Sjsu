@@ -76,20 +76,26 @@
 ;; When the condition is false, return 0.
 ;; There is nothing special about zero -- we just need to return something.
 (define (eval-while c body env)
-  (cons (car (evaluate c env)) env)
-  (if (not (car (evaluate c env)))
-      (cons 0 env)
-      (evaluate body env))
+  (let* ([co (evaluate c env)]
+         [v1 (car co)] [env1 (cdr co)])
+    (if v1
+        (eval-while c body (cdr (evaluate body env1)))
+        (cons 0 env1))
+    )
   
   )
 
 ;; Handles imperative updates.
 (define (eval-assign var exp env)
-  (error "Your code here"))
+  (let* ([e (evaluate exp env)]
+         [v (car e)])
+    (cons v (hash-set (cdr e) var v)))
+  )
 
 ;; Handles sequences of statements
 (define (eval-seq e1 e2 env)
-  (error "Your code here"))
+     (evaluate e2 (cdr (evaluate e1 env)))
+  )
 
 
 ;; Delete later

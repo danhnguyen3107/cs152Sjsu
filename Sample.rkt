@@ -1,9 +1,7 @@
 #lang racket
 
-(cons 2 (hash))
+(define ht (hash 'a 3 'b 15))
+(define ht2 (hash-set ht 'a 42))
 
-(cdr (cons 2 (hash)))
-(if #f
-    2
-    3)
-
+(hash-ref ht2 'c 0)
+ht2
