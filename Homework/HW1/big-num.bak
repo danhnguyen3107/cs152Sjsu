@@ -50,13 +50,10 @@
     [else
        ;;
        ;; --- YOUR CODE HERE ---
-     
-       (define sum (+ (car x) (car y) co))
-       (if (>= sum MAX_BLOCK) 
+       {let ([sum (+ (car x) (car y) co)])
+         (if (>= sum MAX_BLOCK) 
            (cons (- sum  MAX_BLOCK) (big-add1 (cdr x) (cdr y) 1))
-           (cons sum (big-add1 (cdr x) (cdr y) 0)))
-      
-       ;;
+           (cons sum (big-add1 (cdr x) (cdr y) 0)))}
 
      ]
     ))
@@ -84,14 +81,15 @@
   ;; --- YOUR CODE HERE ---
   (cond
     [(and (= 0 (length x)) (= 0 (length y)))
-     (if (= borrow 0) '() (error "Not implemented"))]
-    [(< (length x) (length y)) (error "Not implemented")]
+     (if (= borrow 0) '() (error "Can't subtract"))]
+    [(< (length x) (length y)) (error "Can't subtract")]
     [(= (length y) 0) (big-subtract1 x (list borrow) 0)]
     [else
-     (define res (- (car x) (car y) borrow))
+     
+     {let ([res (- (car x) (car y) borrow)])
      (if (< res 0)
          (cons (+ MAX_BLOCK res) (big-subtract1 (cdr x) (cdr y) 1))
-         (cons res (big-subtract1 (cdr x) (cdr y) 0)))
+         (cons res (big-subtract1 (cdr x) (cdr y) 0)))}
      ]
     )
   ;;(error "Not implemented")
@@ -116,7 +114,7 @@
   (-> bignum? bignum?)
   (big-subtract x '(1))
   )
-
+;; helper method for big-multiply method
 (define/contract (helper x y num)
   (-> bignum? integer? integer? bignum?)
   (cond
@@ -124,10 +122,9 @@
       (if (= num 0) '() (list num))]
     [else
      
-     (define res (+ (* (car x) y) num))
      (cons
-      (remainder res MAX_BLOCK)
-      (helper (cdr x) y (quotient res MAX_BLOCK)))
+      (remainder (+ (* (car x) y) num) MAX_BLOCK)
+      (helper (cdr x) y (quotient (+ (* (car x) y) num) MAX_BLOCK)))
      ]
     )
   

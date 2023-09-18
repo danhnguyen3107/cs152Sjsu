@@ -1,0 +1,7 @@
+#lang racket
+
+(define/contract good-hash
+    (hash/c integer? boolean?)
+    (hash 1 #t
+          2 #f
+          3 #t))

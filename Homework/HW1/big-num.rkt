@@ -121,10 +121,10 @@
     [(= (length x) 0)
       (if (= num 0) '() (list num))]
     [else
-     
+     {let ([res (+ (* (car x) y) num)])
      (cons
-      (remainder (+ (* (car x) y) num) MAX_BLOCK)
-      (helper (cdr x) y (quotient (+ (* (car x) y) num) MAX_BLOCK)))
+      (remainder res MAX_BLOCK)
+      (helper (cdr x) y (quotient res MAX_BLOCK)))}
      ]
     )
   
@@ -133,9 +133,9 @@
 ;; Multiplies two big-nums
 (define/contract (big-multiply x y)
   (-> bignum? bignum? bignum?)
-  ;;
+  
   ;; --- YOUR CODE HERE ---
-  ;;
+
   (cond
     [(and (= 1 (length x)) (= 0 (car x))) '(0)]
     [(and (= 1 (length y)) (= 0 (car y))) '(0)]
@@ -143,13 +143,6 @@
     [else (big-add (helper x (car y) 0) (cons 0 (big-multiply x (cdr y))))])
 
   
-  ;; Follow the same approach that you learned in
-  ;; grade school for multiplying numbers, except
-  ;; that a "block" is 0-999, instead of 0-9.
-  ;; Consider creating a helper function that multiplies
-  ;; a big-number with a integer in the range of 0-999.
-  ;; Once you have that working, you can use it in your
-  ;; solution here.
   )
 
 ;; Raise x to the power of y
