@@ -72,6 +72,7 @@
 
   )
 
+
 ;; Evaluates a loop.
 ;; When the condition is false, return 0.
 ;; There is nothing special about zero -- we just need to return something.
@@ -100,8 +101,6 @@
 
 ;; Delete later
 (define empty-env (hash))
-
-
 
 
 
