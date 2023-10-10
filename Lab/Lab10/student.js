@@ -16,7 +16,7 @@ function Student(firstName, lastName, studentID) {
 var studentArray = [];
 
 studentArray.push(new Student("Dinh", "Nguyen", 0));
-studentArray.push(new Student("Rachel", "Green", 1));
+studentArray.push(new Student("Robert", "Green", 1));
 
 studentArray[1].display()
 
@@ -30,7 +30,7 @@ console.log(tan)
 var Mark = {
 
     firstName: "Mark",
-    lastName: "Tribianni",
+    lastName: "Pham",
     studentID: 3,
 
     __proto__: new Student
