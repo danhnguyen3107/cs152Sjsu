@@ -123,10 +123,8 @@ class IfExpr implements Expression {
     }
     public Value evaluate(Environment env) {
         Value v = cond.evaluate(env);
-        Boolean cond = false;
 
-
-        if ((v instanceof BoolVal && ((BoolVal) v).toBoolean()) ||  (v instanceof IntVal && ((IntVal) v).toInt() != 0)) return thn.evaluate(env);
+        if (((BoolVal) v).toBoolean()) return thn.evaluate(env);
         else if (this.els != null) return els.evaluate(env);
 
         return new NullVal();
