@@ -241,9 +241,8 @@ class FunctionAppExpr implements Expression {
     public Value evaluate(Environment env) {
         // YOUR CODE HERE
         List arguments = new ArrayList<Value>();
-        for (Expression expression : this.args) {
+        for (Expression expression : this.args)
             arguments.add(expression.evaluate(env));
-        }
 
         ClosureVal closure = ((ClosureVal) this.f.evaluate(env));
         return closure.apply(arguments);

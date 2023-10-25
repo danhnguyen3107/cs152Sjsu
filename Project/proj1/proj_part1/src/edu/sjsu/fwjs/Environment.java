@@ -64,8 +64,4 @@ public class Environment {
             this.env.put(key, v);
     }
 
-    public static void main(String[] args) {
-        PrintStream v = System.out;
-        v.println("asdafa");
-    }
 }
